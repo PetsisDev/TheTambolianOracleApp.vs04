@@ -1,0 +1,80 @@
+<RoundedButton@Button>:
+    background_color: 0,0,0,0
+	background_normal: ''
+    canvas.before:
+        Color:
+            rgba: app.COLOR_BUTTON
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [30]  # border radius
+    font_size: 12
+    size_hint: (.1, .1)
+    #pos: (10, 10)
+    pos_hint: {'center_x':0.5, 'center_y':0.2}
+    height: 10
+
+<DiceButton@Button>:
+    #background_normal: 'images/dice.png'
+    text: "roll"
+    color: 0,0,0,1
+    size: 75, 25
+    size_hint: None, None
+    pos_hint: {'center_x':0.5, 'center_y':0.2}
+
+
+<GoHomeButton@Button>:
+    background_normal: 'images/homeButton.png'
+    background_down: 'images/homeButton.png'
+    text: "Back to Safety"
+    color: 0,0,0,1
+    font_size: 12
+    size_hint: (.1, .1)
+    pos: (10, 10)
+    pos_hint: {'center_x':0.1, 'center_y':0.1}
+    height: 10
+
+
+<NextRollButton@Button>:
+    text: "ok"
+    color: 0,0,0,1
+    font_size: 12
+    opacity: 0
+    size: 125, 50
+    size_hint: None, None
+    pos_hint: {'center_x':0.5, 'center_y':0.1}
+    height: 10
+
+
+<FinalAnswerButton@Button>:
+    text: "Shun advice at any price; \nthat is what I call good advice."
+    color: 0,0,0,1
+    font_size: 20
+    size_hint: (.2, .2)
+    pos_hint: {'center_x':0.5, 'center_y':0.5}
+
+
+<Journal_data_field@Button>:
+    background_color: 0,0,0,0
+	background_normal: ''
+    canvas.before:
+        Color:
+            rgba: (0.3, 0, 0, .3)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size[0], self.size[1] *.9
+            radius: [60]  # border radius
+
+
+    color: "#395160"
+    font_name: 'Comic'
+    outline_color: (0, 0, 0)
+    outline_width: .5
+
+
+    text_size: (250, None)  # Width is set, height is None to avoid wrapping
+    shorten: True  # Enable text shortening
+    shorten_from: 'left'  # Shorten from the left side (beginning of the text)
+    halign: "left"
+    padding: 5
+

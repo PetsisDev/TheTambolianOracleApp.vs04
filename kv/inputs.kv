@@ -1,0 +1,49 @@
+<UserQuestionTextInput@TextInput>:
+    background_color: 0, 0, 0, 0
+    background_normal: ''
+    canvas.before:
+        Color:
+            rgba: 0,0,0,.3
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+            radius: [30]  # border radius
+
+        Color:
+            rgba: app.COLOR_BUTTON  # set the text color to red
+    size_hint: None, None
+    size: 300, 100
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+    padding: [10, 5]
+    multiline: True
+    halign: 'center'
+    font_size: 25
+    font_name: 'Comic'
+    #hint_text: "Type your question here..."
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<JournalBoxBackground@GridLayout>:
+    canvas.before:
+        Color:
+            rgba: (111/255, 147/255, 137/255, 1)
+        RoundedRectangle:
+            pos: self.pos
+            size: self.size
+    id: JournalBoxBackground
+    name: "JournalBoxBackground"
+    cols: 4
+    size_hint: 1, .15
+
+

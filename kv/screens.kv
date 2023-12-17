@@ -1,0 +1,261 @@
+<WelcomeScreen>:
+	name: "WelcomeScreen"
+	BackgroundImage:
+    BoxLayout:
+        orientation: 'vertical'
+        size: root.width, root.height
+        padding: 20
+		spacing: 50
+        H1Header:
+            text: "The Tambolian Oracle"
+            underline: True
+        H2Header:
+            text: "The Truth is not hidden,\n just deeply unnoticed"
+        RoundedButton:
+            text: "Enter"
+            color: app.COLOR_FONT_MAIN
+            outline_color: 0,0,0
+            outline_width: 1
+            font_name: app.BUTTON_FONT
+            font_size: 25
+            size_hint: None, None
+            size: 150, 35
+            on_release:
+                app.root.current = "GameScreenStart"
+                root.manager.transition.direction = "left"
+        RoundedButton:
+            text: "Journal"
+            color: app.COLOR_FONT_MAIN
+            outline_color: 0,0,0
+            outline_width: 1
+            font_name: app.BUTTON_FONT
+            font_size: 25
+            size_hint: None, None
+            size: 150, 35
+            on_release:
+                app.root.current = "JournalScreen"
+                root.manager.transition.direction = "left"
+
+
+
+
+
+<GameScreenStart>:
+    name: "GameScreenStart"
+    BackgroundImage:
+    FloatLayout:
+		orientation: 'vertical'
+		size: root.width, root.height
+
+		DomainSubHeader:
+		    text: "\n- Relax -\n- Take a Breath -\n- Ask a Question -"
+
+        UserQuestionTextInput:
+            id: text_input
+            #hint_text: "Ask a question"
+			#size: root.height/3, root.height/3
+        RoundedButton:
+		    id: roll_dice_button
+		    text: 'ASK'
+		    color: 0,0,0,1
+			on_release:
+			    root.start()
+                app.root.current = "GameScreenRound1"
+                root.manager.transition.direction = "left"
+		GoHomeButton:
+			on_release:
+				app.root.current = "WelcomeScreen"
+				root.clear()
+				root.manager.transition.direction = "right"
+
+
+
+<GameScreenRound1>:
+    name: "GameScreenRound1"
+    BackgroundImage:
+    FloatLayout:
+        id: float_layout
+		orientation: 'vertical'
+		size: root.width, root.height
+		DomainHeader:
+			text: "Primary Motivation"
+			outline_width: 0.5
+        Wheel1Image:
+            id: image_wheel1
+		DiceButton:
+		    id: roll_dice_button
+            on_press:
+                root.game_step1()
+	    ResultPopup:
+            id: result_label
+		GoHomeButton:
+		    id: go_home_button
+			on_release:
+				app.root.current = "WelcomeScreen"
+				root.clear()
+				root.manager.transition.direction = "right"
+        NextRollButton:
+		    id: next_roll
+			on_release:
+			    root.clear()
+				app.root.current = "GameScreenRound2"
+
+				root.manager.transition.direction = "left"
+
+
+
+<GameScreenRound2>:
+    name: "GameScreenRound2"
+    BackgroundImage:
+    FloatLayout:
+        id: float_layout
+		orientation: 'vertical'
+		size: root.width, root.height
+		DomainHeader:
+			text: "Intensity of Experience"
+		Wheel2Image:
+            id: image_wheel2
+		DiceButton:
+		    id: roll_dice_button
+            on_press:
+                root.game_step1()
+	    ResultPopup:
+            id: result_label
+		GoHomeButton:
+			on_release:
+				app.root.current = "WelcomeScreen"
+				root.clear()
+				root.manager.transition.direction = "right"
+        NextRollButton:
+		    id: next_roll
+			on_release:
+				app.root.current = "GameScreenRound3"
+				root.clear()
+				root.manager.transition.direction = "left"
+
+
+
+<GameScreenRound3>:
+    name: "GameScreenRound3"
+    BackgroundImage:
+    FloatLayout:
+        id: float_layout
+		orientation: 'vertical'
+		size: root.width, root.height
+		DomainHeader:
+			text: "The Environment"
+		Wheel3Image:
+            id: image_wheel3
+		DiceButton:
+		    id: roll_dice_button
+            on_press:
+                root.game_step1()
+	    ResultPopup:
+            id: result_label
+		GoHomeButton:
+			on_release:
+				app.root.current = "WelcomeScreen"
+				root.clear()
+				root.manager.transition.direction = "right"
+        NextRollButton:
+		    id: next_roll
+			on_release:
+				app.root.current = "GameScreenRound4"
+				root.clear()
+				root.manager.transition.direction = "left"
+
+
+
+<GameScreenRound4>:
+    name: "GameScreenRound4"
+    BackgroundImage:
+    FloatLayout:
+        id: float_layout
+		orientation: 'vertical'
+		size: root.width, root.height
+		DomainHeader:
+			text: "The Chain Links that Bind"
+		Wheel4Image:
+            id: image_wheel4
+		DiceButton:
+		    id: roll_dice_button
+            on_press:
+                root.game_step1()
+	    ResultPopup:
+            id: result_label
+		GoHomeButton:
+			on_release:
+				app.root.current = "WelcomeScreen"
+				root.clear()
+				root.manager.transition.direction = "right"
+        NextRollButton:
+		    id: next_roll
+			on_release:
+				app.root.current = "FinalAnswerScreen"
+				root.clear()
+				root.manager.transition.direction = "left"
+
+
+
+<FinalAnswerScreen>:
+    name: "FinalAnswerScreen"
+    BackgroundImage:
+    FloatLayout:
+        id: float_layout
+		orientation: 'vertical'
+		size: root.width, root.height
+		DomainHeader:
+		    text: "The Tambolian Oracle Speaks"
+        FinalAnswerButton:
+		    id: finish
+            text_size: self.width, None
+			on_press:
+			    root.finish_quote()
+        ResultPopup:
+            id: result_label
+		GoHomeButton:
+			on_release:
+				app.root.current = "WelcomeScreen"
+				root.clear()
+				root.manager.transition.direction = "right"
+        DiceButton:
+			text: "Ask another question"
+			id: more
+			opacity: 0
+			font_size: 12
+            pos_hint: {'center_x':0.5, 'center_y':0.1}
+			on_release:
+				app.root.current = "GameScreenStart"
+			    root.clear()
+				root.manager.transition.direction = "up"
+
+
+
+<JournalScreen>:
+    name: "JournalScreen"
+    BackgroundImage:
+
+    BoxLayout:
+        orientation: 'vertical'
+        Label:
+            text: 'Journal'
+            font_size: 38
+            size_hint: 1, .1
+        ScrollView:
+            GridLayout:
+                id: journal_layout
+                cols: 1
+                spacing: 50
+                size_hint_y: None
+                height: self.minimum_height
+
+    GoHomeButton:
+        size_hint: None, None
+        size: 150, 150
+        text: ''
+        background_normal: 'images/homeButton.png'
+        background_down: 'images/homeButton.png'
+        on_release:
+            root.close_popup(self)
+            app.root.current = "WelcomeScreen"
+            root.manager.transition.direction = "right"

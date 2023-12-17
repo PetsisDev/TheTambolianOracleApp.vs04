@@ -1,0 +1,125 @@
+
+<DefinitionPopup@FloatLayout>:
+    name: 'DefinitionPopup'
+    id: DefinitionPopup
+    orientation: 'vertical'
+    size_hint: None, None
+    size: 500, 500
+    pos_hint: {'center_x': .5, 'center_y': .5}
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/scroll.png"
+
+    Label:
+        id: header_label
+        outline_color: 0,0,0
+        outline_width: .8
+        color: app.COLOR_BUTTON
+        #size_hint: None, None
+        pos_hint: {'center_x': .5, 'center_y': .75}
+        font_name: app.FONT_HEADER
+        font_size: 38
+        markup: True
+
+    Label:
+        id: definition_label
+        color: 0,0,0,1
+        #size_hint: None, None
+        pos_hint: {'center_x': .5, 'center_y': .5}
+        font_name: app.FONT_SUB_TEXT
+        font_size: 25
+        text_size: self.width*.6, None
+        halign: 'center'
+
+    RoundedButton:
+        color: app.COLOR_FONT_MAIN
+        outline_color: 0,0,0
+        outline_width: .5
+        text: 'close'
+        font_name: app.BUTTON_FONT
+        font_size: 25
+
+
+        id: close_button
+
+        size_hint: None, None
+        size: 150, 35
+        pos_hint: {'center_x': .5, 'center_y': .05}
+
+
+
+
+
+
+
+
+
+
+
+
+<DefinitionPopupOLD2@BoxLayout>:
+    name: 'DefinitionPopupOLD2'
+    id: DefinitionPopupOLD2
+
+    orientation: 'vertical'
+    size_hint: None, None
+    size: 300, 200  # Set an initial height, will be adjusted dynamically
+    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+
+    canvas.before:
+        Rectangle:
+            pos: self.pos
+            size: self.size
+            source: "images/journal_bg.jpg"
+
+
+
+
+    BoxLayout:
+        id: header_bar
+        size_hint: None, None
+        size: 300, 20
+        pos_hint: {'right': 1}
+
+
+
+
+
+        Label:
+            canvas.before:
+                Color:
+                    rgba: app.POPUP_BACKGROUND_COLOR
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            id: header_label
+            size_hint: None, None
+            size: 280, 20
+            color: 1, 0, 0, 1
+            font_name: app.FONT_SUB_TEXT_2
+            font_size: 25
+
+        Button:
+            id: close_button
+            background_down: ''
+            size_hint: None, None
+            size: 20, 20
+            text: 'X'
+
+
+
+    Label:
+
+        id: definition_label
+        halign: "center"
+        color: 0, 1, 0, 1
+        text_size: self.width*.8, None
+        size_hint: None, None
+        size: 300, self.texture_size[1]
+        padding: 10
+
+        font_name: app.FONT_SUB_TEXT
+        font_size: 18

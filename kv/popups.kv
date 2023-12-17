@@ -1,0 +1,58 @@
+<ResultPopup@Label>:
+    name: 'ResultPopup'
+    id: ResultPopup
+    canvas.before:
+        Color:
+            rgba: app.POPUP_BACKGROUND_COLOR
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+    #text: ''
+    color: 0,0,0,1
+    font_size: 25
+    text_size: self.width, None
+    size_hint: None, None
+    height: self.texture_size[1]
+    width: 400
+    halign: 'center'
+    pos_hint: {'center_x':0.5, 'center_y':0.5}
+
+
+
+
+
+
+<DefinitionPopupOLD@BoxLayout>:
+    name: 'DefinitionPopupOLD'
+    id: DefinitionPopupOLD
+    canvas.before:
+        Color:
+            rgba: 1, 1, 1, .8
+        Rectangle:
+            pos: self.pos
+            size: self.size
+    orientation:'vertical'
+    size_hint: None, None
+    size: 300, 200
+    pos_hint: {'center_x':0.5, 'center_y':0.5}
+
+
+    Button:
+        id: close_button
+        background_down: ''
+        size_hint: None, None
+        size: 20, 20
+        pos_hint: {'right': 1, 'top': 1}
+        text: 'X'
+    Label:
+        id: header_label
+        halign: "center"
+        color: .3, .8, .1, 1
+    Label:
+        id: definition_label
+        text_size: self.width, None
+        #height: self.texture_size[1]
+        halign: "center"
+        multiline: True
+        color: .3, .8, .1, 1
